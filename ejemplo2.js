@@ -7,4 +7,5 @@ if( a > b ){
 }else{
 	max = b
 }
-alert( c )		// 3
+alert( max ) // 3
+
