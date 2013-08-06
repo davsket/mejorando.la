@@ -8,7 +8,7 @@
 	
 	function getArtist( evt ){
 		// Enter
-		if(evt.keycode == 13){
+		if(evt.keyCode == 13){
 			requestArtist()
 		}
 	}
@@ -19,11 +19,12 @@
 			data: {
 				artist: artistInput.val(),
 				api_key: '42f75f939105d2110d6a0daf27db431c',
-				format: 'json'
+				format: 'json',
+				method: 'artist.getinfo'
 			},
 			// url: '/res/data/lastfm.json'
-			url: 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo'
-		}).done(fillArtistInfo)
+			url: 'http://ws.audioscrobbler.com/2.0/'
+		}).done( fillArtistInfo )
 	}
 
 	function fillArtistInfo( jsonData ){ 

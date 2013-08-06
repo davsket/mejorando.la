@@ -1,4 +1,4 @@
-var a = 2
-var b = 3
-var c = a + b
+var a = 2,
+	b = 3,
+	c = a + b
 console.log(c)		// 5
