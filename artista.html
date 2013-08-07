@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Buscador de Artistas</title>
+	</head>
+	<body>
+		<h1>Buscador de Artistas</h1>
+		<label for="artist">Ingresa tu artista favorito</label>
+		<input type="text" id="artista">
+		<button id="buscar">buscar</button>
+		<div id="resultado"></div>
+		
+		<script type="text" id="artist">
+			<article class="content">
+				<h2 id="nombre-artista"></h2>
+				<figure>
+					<img src="" alt="">
+					<figcaption></figcaption>
+				</figure>
+				<aside id="band-members"></aside>
+				<p id="bio-artista"></p>
+			</article>
+		</script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
+		<script>
+			var $artista = $('#artista'),
+				$buscar = $('#buscar')
+
+			$artista.on('keyup', function(evt){
+				if( evt.keyCode == '13' ){ // enter
+					buscarArtista()
+				}
+			})
+			$buscar.on('click', buscarArtista)
+
+			function buscarArtista(){
+				//Peticion AJAX
+				$.ajax({
+					data: {
+						artist: $artista.val(),
+						api_key: '42f75f939105d2110d6a0daf27db431c',
+						format: 'json',
+						method: 'artist.getinfo'
+					},
+					url: 'http://ws.audioscrobbler.com/2.0/'
+				})
+			}
+		</script>
+	</body>
+</html>
