@@ -24,7 +24,8 @@
 			},
 			// url: '/res/data/lastfm.json'
 			url: 'http://ws.audioscrobbler.com/2.0/'
-		}).done( fillArtistInfo )
+		})
+		.done( fillArtistInfo )
 		
 		resultOut.html( '<p class="loading">cargando...</p>' )
 	}
@@ -35,7 +36,7 @@
 			html = ''
 		
 		html += '<h2>' + artist.name + '</h2>'
-		html += '<figcaption><img src="' + artist.image[2]['#text'] + '"></figcaption>'
+		html += '<figure><img src="' + artist.image[artist.image.length-1]['#text'] + '"></figure>'
 		html += '<p class="bio">' + artist.bio.summary + '</p>'
 		
 		resultOut.html( html )
