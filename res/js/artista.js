@@ -25,6 +25,8 @@
 			// url: '/res/data/lastfm.json'
 			url: 'http://ws.audioscrobbler.com/2.0/'
 		}).done( fillArtistInfo )
+		
+		resultOut.html( '<p class="loading">cargando...</p>' )
 	}
 
 	function fillArtistInfo( jsonData ){ 
@@ -33,8 +35,8 @@
 			html = ''
 		
 		html += '<h2>' + artist.name + '</h2>'
-		html += '<img src="' + artist.image[0]['#text'] + '">'
-		html += '<p>' + artist.bio.summary + '</p>'
+		html += '<figcaption><img src="' + artist.image[2]['#text'] + '"></figcaption>'
+		html += '<p class="bio">' + artist.bio.summary + '</p>'
 		
 		resultOut.html( html )
 	}

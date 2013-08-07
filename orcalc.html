@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ejemplo1 Calculadora</title>
+		<link href="res/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			body{
+				padding: 2em
+			}
+			.form-control{
+				display: inline-block;
+				width: auto;
+			}
+			.result{
+				margin-top: 1em;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>le Calc</h1>
+		<div class="inputs">
+			<label for="var-a">Variable A</label>
+			<input type="text" id="var-a" class="form-control">
+			<select id="operator" class="form-control">
+				<option value="+">más</option>
+				<option value="-">menos</option>
+				<option value="*">por</option>
+				<option value="/">dividido por</option>
+			</select>
+			<label for="var-b">Variable B</label>
+			<input type="text" id="var-b" class="form-control">
+			<button id="calc" class="btn btn-primary">Calcular</button>
+		</div>
+		<div class="result">
+			<label>Resultado</label>
+			<input type="text" id="res" class="form-control" readonly>
+		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			var $calc = $('#calc'),
+				$varA = $('#var-a'),
+				$varB = $('#var-b'),
+				$operator = $('#operator'),
+				$res = $('#res');
+
+			function calculate(){
+				var op, a, b, result;
+				
+				op = $operator.val();
+				a = parseInt( $varA.val() || 0 );
+				b = parseInt( $varB.val() || 0 );
+
+				if(op == '+'){
+					result = a + b
+				}else if(op == '-'){
+					result = a - b
+				}else if(op == '*'){
+					result = a * b
+				}else{
+					result = a / b
+				}
+
+				$res.val( result )
+			}
+
+			$calc.on('click', calculate)
+
+		</script>
+	</body>
+</html>

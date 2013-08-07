@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ejemplo Bucles</title>
+		<link href="res/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			body{
+				padding: 2em;
+			}
+			.form-control{
+				display: inline-block;
+				width: auto;
+			}
+			label{
+				display: block;
+			}
+			.result, 
+			.button-container{
+				margin-top: 1em;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Contador de vocales</h1>
+		<div class="inputs">
+			<label for="word">Palabra</label>
+			<input type="text" id="palabra" class="form-control">
+		</div>
+		<div class="button-container">
+			<button id="count" class="btn btn-primary">contar vocales</button>
+		</div>
+		<div class="result">
+			<h2>Resultados</h2>
+			<div class="res-a">
+				A <span id="a-count"></span>
+			</div>
+			<div class="res-e">
+				E <span id="e-count"></span>
+			</div>
+			<div class="res-i">
+				I <span id="i-count"></span>
+			</div>
+			<div class="res-o">
+				O <span id="o-count"></span>
+			</div>
+			<div class="res-u">
+				U <span id="u-count"></span>
+			</div>
+		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			var vowels = 'aeiou',
+				// elementos
+				$word = $('#palabra'),
+				$count = $('#count')
+
+			function countVowels(){
+				var word = $word.val(),
+					res = { a: 0, e:0, i:0, o:0, u:0 },
+					vowel;
+
+				for(var i=0; i<word.length; i++){
+					vowel = word[i];
+					if( vowels.indexOf(vowel) != -1 ){
+						// res[v] = res[v] + 1
+						++res[vowel];
+					}
+				}
+
+				for(var key in res){
+					$('#' + key + '-count').html( res[ key ] )
+				}
+			}
+
+			$count.on('click', countVowels)
+
+		</script>
+	</body>
+</html>
