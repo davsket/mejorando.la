@@ -2,28 +2,29 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Contar vocales</title>
+		<title>Contador de Vocales</title>
 	</head>
 	<body>
-		<h1>Calculador de Vocales</h1>
+		<h1>Contador de Vocales</h1>
 		<label for="frase">Ingresa tu frase:</label>
 		<input type="text" id="frase">
-		<button id="contar">Contar vocales</button>
-		<h2>Resultados</h2>
-		<div>
-			A <span id="a-cantidad"></span>
-		</div>
-		<div>
-			E <span id="e-cantidad"></span>
-		</div>
-		<div>
-			I <span id="i-cantidad"></span>
-		</div>
-		<div>
-			O <span id="o-cantidad"></span>
-		</div>
-		<div>
-			U <span id="u-cantidad"></span>
+		<button id="contar">contar vocales</button>
+		<div class="resultados">
+			<div class="res">
+				A <span id="a-vocal"></span>
+			</div>
+			<div class="res">
+				E <span id="e-vocal"></span>
+			</div>
+			<div class="res">
+				I <span id="i-vocal"></span>
+			</div>
+			<div class="res">
+				O <span id="o-vocal"></span>
+			</div>
+			<div class="res">
+				U <span id="u-vocal"></span>
+			</div>
 		</div>
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -33,26 +34,33 @@
 				$contar = $('#contar'),
 				vocales = 'aeiou';
 
+			$frase.on('keyup', function( evt ){
+				if( evt.keyCode == '13' ){
+					contarVocales()
+				}
+			})
+			$contar.on('click', contarVocales)
+
 			function contarVocales(){
-				var frase = $frase.val(),
-					res = { a:0, e:0, i:0, o:0, u:0 },
+				// var frase = $frase.val(),
+				var frase = $frase.val().toLowerCase(),
+					res = {a:0, e:0, i:0, o:0, u:0},
 					letra;
 
-				for(var i=0; i<frase.length; i++){
+				for(var i=0; i<frase.length; ++i){
 					letra = frase[i];
-					if( vocales.indexOf(letra) != -1 ){// es una vocal
+					if( vocales.indexOf( letra ) != -1 ){
 						// res[letra] = res[letra] + 1;
-						++res[letra];
+						// res[letra] += 1;
+						res[letra]++;
 					}
 				}
 
 				for( var key in res ){
-					// recorrer cada indentificador o taributo del obj res
-					$('#'+key+'-cantidad').text( res[key] )
+					console.log( key, res[ key ], $('#' + key + '-vocal') )
+					$('#' + key + '-vocal').text( res[ key ] )
 				}
 			}
-
-			$contar.on('click', contarVocales)
 		</script>
 	</body>
 </html>

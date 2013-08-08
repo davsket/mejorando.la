@@ -11,7 +11,7 @@
 
 		ctx.beginPath()
 		ctx.arc(x, y, r, 0, 2 * Math.PI, false)
-		ctx.fillStyle = 'red'
+		ctx.fillStyle = fill
 		ctx.fill()
 		ctx.strokeStyle = strokeStyle
 		ctx.lineWidth = 4

@@ -12,15 +12,16 @@
 			<option value="+">más</option>
 			<option value="-">menos</option>
 			<option value="*">por</option>
-			<option value="/">dividido por</option>
+			<option value="/">divido por</option>
 		</select>
 		<label for="var-b">variable b</label>
 		<input type="text" id="var-b">
 		<button id="calcular">calcular</button>
-		<label for="var-a">resultado:</label>
 		<input type="text" id="resultado">
+
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script>
+			//Nuestro código
 			var $vara = $('#var-a'),
 				$varb = $('#var-b'),
 				$operador = $('#operador'),
@@ -28,26 +29,26 @@
 				$resultado = $('#resultado');
 
 			function calcular(){
-				var operador, a, b, resultado;
+				var op, a, b, res;
 
-				a = $vara.val();
-				b = $varb.val();
-				operador = $operador.val();
+				a = parseInt( $vara.val() );
+				b = parseInt( $varb.val() );
+				op = $operador.val();
 
-				if(operador == '+'){
-					resultado = a + b
-				}else if(operador == '-'){
-					resultado = a - b
-				}else if(operador == '*'){
-					resultado = a * b
+				if( op == '+' ){
+					res = a + b
+				}else if( op == '-' ){
+					res = a - b
+				}else if( op == '*' ){
+					res = a * b
 				}else{
-					resultado = a / b
+					res = a / b
 				}
 
-				$resultado.val( resultado )
+				$resultado.val( res )
 			}
 
-			$calcular.on('click', calcular)
+		$calcular.on('click', calcular)
 		</script>
 	</body>
 </html>
